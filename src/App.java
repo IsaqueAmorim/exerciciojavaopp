@@ -29,10 +29,11 @@ public class App {
         
         System.out.print("Qual o valor do seu Depósito? ");
         double add = scan.nextDouble();
+        scan.close();
         data.deposito(add);
         System.out.println(); 
         System.out.printf("Seu saldo atualizado é: %.2f%n",data.getSaldo());
         
-        scan.close();
+        
 }
 }

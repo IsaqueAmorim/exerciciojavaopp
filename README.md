@@ -1,8 +1,8 @@
-#  **♨️ Exercício introdução Orientação a Objetos com Java**
+#  **♨️ Exercício de introdução a Orientação a Objetos com Java**
 
 Esse é um exercício em Java para treinar alguns dos conceitos basicos de *Orientação a Objetos*.
 
-Com esse Exercício abordei os pontos Construtores, **Sobrecarga**, **Encapsulamento** e também um pouco de **Modificadores de Acesso**.
+Com esse Exercício abordei os pontos Construtores, `Sobrecarga`, `Encapsulamento` e também um pouco de `Modificadores de Acesso`.
 
 ### Enunciando e contexto do Exercício
 
@@ -37,10 +37,13 @@ public Class(Sring name, int accountNumber, double balance){
 }
 ~~~
 
-Nosso contrutor recebeu o nome genérico de Class, nele vamos passar os seguintes parametros: __*name*__, __*accountNumber*__ e __*balance*__. Esse construtor diferente das variáveis que criamos anteriormente, recebe **public** como modificador de acesso, então nesse caso vamos conseguir acessa-lo em outras classes e outros arquivos.
-Note que usamos __*this*__ no construtor, esse *this* faz referência ao objeto, então **this.name** faz referência a variavel criada anteriormente, e o **name** é o parametro do contrutor. Então de umas forma simples a *variavel name* está recebendo o *parametro name*.
+Nosso contrutor recebeu o nome genérico de Class, nele vamos passar os seguintes parametros: ```name```, ```accountNumber``` e ```balance```. Esse construtor diferente das variáveis que criamos anteriormente, recebe `public` como modificador de acesso, então nesse caso vamos conseguir acessa-lo em outras classes e outros arquivos.
+Note que usamos `this` no construtor, esse *this* faz referência ao objeto, então `this.name` faz referência a variavel criada anteriormente, e o `name` é o parametro do contrutor. Então de umas forma simples a *variavel name* está recebendo o *parametro name*.
 
 Com o construtor definido vamos agora criar os getters e setter do nosso app, pois como descrito no enunciado algumas informações podem ser alteradas(setters) e também vamos precisar acessar as variáveis privadas então vamos usar o método get para retornar o resultado.
+
+
+### __3️⃣ Criando Getters e Setters__
 
 ~~~java
 
@@ -64,4 +67,32 @@ public double getBalance{
 }
 ~~~
 
-Repare que apenas o nome tem um Setter, isso porque no enunciado diz que apenas o nome pode ser alterado, já a o número da conta nunca pode ser alterado e o saldo só pode ser alterado mediante saque ou depósito.
+Repare que apenas o nome tem um Setter, isso porque no enunciado diz que apenas o nome pode ser alterado, já o número da conta nunca pode ser alterado e o saldo só pode ser alterado mediante saque ou depósito.
+
+### __4️⃣ Criando métodos de depósito e de saque__
+
+Já que o saldo só pode ser alterado mediante a saque ou depósito vamos criar os metodos propostos, lembrando que existe uma taxa de saque de $5,00 para cada operação.
+
+~~~java
+
+//MÉTODO DE DEPÓSITO
+public void deposit(deposit){
+  balance += deposit;
+}
+
+// MÉTODO DE SAQUE
+public void withdraw(withdraw){
+  balance -= (withdraw + 5);
+}
+~~~
+
+Agora que já temos nosso médoto de depósito, podemos alterar nosso construtor, pois lá o saldo inicial está sendo definido diretamente e é uma boa prática usar o método que foi criado para essa função e também poque se houver alguma alteração na política de depositos da empresa será necessário alterar em apenas um lugar.
+
+Vamos substituir o ```this.balance = balance``` por ```deposit(initialDeposit)``` fazendo o construtor ficar assim:
+~~~java
+public Class(String name, int accountNumber, double initialDeposit){
+  this.name = name;
+  this.accountNumber = accountNumber;
+  deposit(initialDeposit);
+}
+~~~

@@ -8,7 +8,7 @@ Com esse Exercício abordei os pontos Construtores, `Sobrecarga`, `Encapsulament
 
 >
 
-## __📂 Arquivo Class__
+## __📑 Arquivo Class.java__
 
 ### __1️⃣ Definindo variáveis__
 
@@ -95,4 +95,12 @@ public Class(String name, int accountNumber, double initialDeposit){
   this.accountNumber = accountNumber;
   deposit(initialDeposit);
 }
+~~~
+
+## __📑 Arquivo App.java__
+
+Aqui no App vamos apenas instanciar as variáveis e imprimir na tela o que fizemos no outro arquivo, note que todas os métodos estão no arquivo `Class.java`, isso acontece porque estamos usando o conceito de responsabilidade.
+
+~~~java
+
 ~~~

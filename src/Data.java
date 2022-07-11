@@ -1,41 +1,45 @@
 
 
-public class Data {
-   
-  private String name;
-  private int conta;
-  private double saldo;
-  
+public class Class{
+    
+    private String name;
+    private int accountNumber;
+    private double balance;
+    
+    public Class(String name, int accountNumber, double deposit){
+        this.name = name;
+        this.accountNumber = accountNumber;
+        deposit(deposit);
+        
 
-  public Data(String name, int conta, double saldo){
-    this.name = name;
-    this.conta = conta;
-    this.saldo=saldo;
+    }
 
-  }
+    // RETORNANDO O NOME
+    public String getName(){
+        return name;
+    }
+    // DEFININDO OU ALTERANDO O NOME
+    public void setName(String name){
+        this.name = name;
+    }
+    // RETORNANDO O NÚMERO DA CONTA
+    public int getAccountNumber(){
+        return accountNumber;
+    }
+    //RETORNANDO O SALDO
+    public double getBalance(){
+        return balance;
+    }
 
-  public String getName(){
+    //METODO DE SAQUENT
+    public void withdraw(double value){
 
-    return name;
-  }
-  public void setName(String name){
-    this.name = name; 
-  }
-  public int getConta() {
-      return conta;
-  }
-  public void setConta(int conta){
-    this.conta = conta;
-  }
-  public double getSaldo(){
-    return saldo;
-  }
-  
-  public void saque(double valor){
-    saldo = saldo -valor - 5.00;
-  }
-  public void deposito(double valor){
-    saldo += valor;
-  }
+        balance -= (value + 5);
+    }
+    
+    //METODO DE DEPOSITO
+    public void deposit(double value){
 
+        balance += value;
+    }
 }

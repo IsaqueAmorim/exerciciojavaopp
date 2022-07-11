@@ -4,9 +4,13 @@ Esse é um exercício em Java para treinar alguns dos conceitos basicos de *Orie
 
 Com esse Exercício abordei os pontos Construtores, `Sobrecarga`, `Encapsulamento` e também um pouco de `Modificadores de Acesso`.
 
-### Enunciando e contexto do Exercício
+### 🔠  Enunciando e contexto do Exercício
 
+>Em um banco, para se cadatrar uma conta bancária é necessário informar o núemro da conta e o nome do titular da conta, e o valor do depósito inicial que o titular depositou na conta. Este valor de depósito inicial, entretando, é opicional, ou seja: se o titular não tiver dinheiro a depositar no momento de abrir sua conta, o depósito inicial não será feito e o saldo inicial da conta será, naturalmente, zero.
 >
+>Importante: Uma vez que uma conta bacária foi aberta, o núemro da conta nunca poderá ser alterado. Já o nome do titular pode ser alterado.
+>
+>Por fim, o saldo da conta não pode ser alterado livremente. É preciso haver um mecanismo para proteger isso. O saldo só aumenta mediante a depósitos, e só diminui por meio de saques. Para cada saque realizado, o banco cobra uma taxa de $5,00. Nota: a conta pode ficar com saldo negativo se o saldo não for suficiente para realizar o saque e/ou pagar a taxa.
 
 ## __📑 Arquivo Class.java__
 
@@ -102,5 +106,53 @@ public Class(String name, int accountNumber, double initialDeposit){
 Aqui no App vamos apenas instanciar as variáveis e imprimir na tela o que fizemos no outro arquivo, note que todas os métodos estão no arquivo `Class.java`, isso acontece porque estamos usando o conceito de responsabilidade.
 
 ~~~java
+import java.util.Scanner;
 
+public class App {
+    public static void main(String[] args) throws Exception {
+
+        Scanner scan = new Scanner(System.in);
+
+        //RECEBENDO O NOME DO TITULAR
+        System.out.print("Nome: ");
+        String name = scan.nextLine();
+        //RECEBENDO O NÚMERO DA CONTA
+        System.out.print("Conta: ");
+        int conta = scan.nextInt();
+        // CONDICIONAL DO DEPOSITO INICIAL
+        System.out.print("Deseja fazer um depósito inicial (Y/N) ? ");
+        scan.nextLine();
+        char answer = scan.next().charAt(0);
+        double deposit = 0;
+
+
+        if(answer == 'y'){
+            System.out.print("Qual o valor do dopósito? ");
+            deposit = scan.nextDouble();
+
+        }
+        System.out.println();
+        
+        Class data = new Class(name, conta, deposit);
+        
+        System.out.printf("Olá %s, sua conta é a %d, e seu saldo é %.2f%n",data.getName(),data.getAccountNumber(),data.getBalance());
+        System.out.println();   
+
+        System.out.print("Qual o valor do seu saque? ");
+        double withdraw = scan.nextDouble();
+        data.withdraw(withdraw);
+        System.out.println(); 
+
+        System.out.printf("Seu saldo atualizado é: %.2f%n",data.getBalance());
+        System.out.println();        
+        
+        System.out.print("Qual o valor do seu Depósito? ");
+        double add = scan.nextDouble();
+        data.deposit(add);
+        System.out.println(); 
+        System.out.printf("Seu saldo atualizado é: %.2f%n",data.getBalance());
+        
+        scan.close();
+    }
+}
 ~~~
